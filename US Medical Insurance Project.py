@@ -78,6 +78,7 @@ print("Region:", regions[:5])
 print("Charges:", charges[:5])          
 
 # Calculate the average age using the function
+
 age_average = 0
 def average_age(ages):
     ages_sum = 0
@@ -86,7 +87,26 @@ def average_age(ages):
         ages_sum += age
     if ages_count > 0:
         return ages_sum / ages_count  
-    else: 0
+    else: 
+        return 0
 
 age_average = average_age(ages)
-print(age_average, .2)
+print(age_average)
+
+# What regions are most represented?
+
+def most_afctd_region(regions):
+    region_counts = {}
+    for region in regions:
+        if region in region_counts:
+            region_counts[region] += 1
+        else:
+            region_counts[region] = 1
+    
+    most_common_region = max(region_counts, key=region_counts.get)
+    most_common_count = region_counts[most_common_region]
+    
+    print(f"Most represented region: {most_common_region} with {most_common_count} entries.")
+    return most_common_region
+
+most_afctd_region(regions)
