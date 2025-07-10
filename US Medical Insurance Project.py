@@ -46,3 +46,47 @@ if not os.path.exists('README.md'):
         readme.write(""" ... """)
 else:
     print("README.md already exists. Not overwriting.")
+
+# Initialize lists to store column data
+# These lists will be used to store the data from the CSV file for further analysis.
+ages = []
+sexes = []
+bmis = []
+children = []
+smokers = []
+regions = []
+charges = []
+
+# Read the CSV file again to populate the lists
+with open('python-portfolio-project-starter-files/insurance.csv', 'r') as insurances:
+    reader = csv.DictReader(insurances)
+    for row in reader:
+        ages.append(int(row['age']))
+        sexes.append(row['sex'])
+        bmis.append(float(row['bmi']))
+        children.append(int(row['children']))
+        smokers.append(row['smoker'])
+        regions.append(row['region'])
+        charges.append(float(row['charges']))
+# Print the first few entries of each list to verify data loading
+print("Age:", ages[:5])
+print("Sex:", sexes[:5])
+print("BMI:", bmis[:5])
+print("Children:", children[:5])
+print("Smoker:", smokers[:5])
+print("Region:", regions[:5])
+print("Charges:", charges[:5])          
+
+# Calculate the average age using the function
+age_average = 0
+def average_age(ages):
+    ages_sum = 0
+    ages_count = len(ages)
+    for age in ages:
+        ages_sum += age
+    if ages_count > 0:
+        return ages_sum / ages_count  
+    else: 0
+
+age_average = average_age(ages)
+print(age_average, .2)
