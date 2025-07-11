@@ -91,7 +91,7 @@ def average_age(ages):
         return 0
 
 age_average = average_age(ages)
-print(age_average)
+print(f"Age average is: {age_average:.3f}")
 
 # What regions are most represented?
 
@@ -110,3 +110,22 @@ def most_afctd_region(regions):
     return most_common_region
 
 most_afctd_region(regions)
+
+# How do charges compare between smokers and non-smokers?
+
+smoker_charges = [charge for smoker, charge in zip(smokers, charges) if smoker == "yes"]
+non_smoker_charges = [charge for smoker, charge in zip(smokers, charges) if smoker == "no"]
+
+smoker_avg = sum(smoker_charges) / len(smoker_charges)
+non_smoker_avg = sum(non_smoker_charges) / len(non_smoker_charges)
+
+print(f"Smoker avg: {smoker_avg:.2f}")
+print(f"Non-smoker avg: {non_smoker_avg:.2f}")
+
+#What is the average age of individuals with at least one child?
+
+parents_ages = [age for age, child in zip(ages,children) if child > 0]
+
+parents_age_average = sum(parents_ages) / len(parents_ages)
+
+print(f"The age average of the parents is {parents_age_average:.2f}")
